@@ -1,0 +1,7 @@
+services:
+    lmdi.mytop.listener:
+        class: lmdi\mytop\event\listener
+        arguments:
+            - @user
+        tags:
+            - { name: event.listener }
