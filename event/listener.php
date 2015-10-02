@@ -24,12 +24,17 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.viewtopic_assign_template_vars_before'	 => 'load_language_on_viewtopic',
+			'core.user_setup'	 => 'load_language_on_viewtopic',
 		);
 	}
 
-	public function load_language_on_viewtopic()
+	public function load_language_on_viewtopic($event)
 	{
-		$this->user->add_lang_ext('lmdi/mytop', 'mytop');
+		$lang_set_ext = $event['lang_set_ext'];
+		$lang_set_ext[] = array(
+			'ext_name' => 'lmdi/mytop',
+			'lang_set' => 'mytop',
+		);
+		$event['lang_set_ext'] = $lang_set_ext;
 	} 
 }
