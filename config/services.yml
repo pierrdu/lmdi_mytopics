@@ -3,5 +3,7 @@ services:
         class: lmdi\mytop\event\listener
         arguments:
             - @user
+            - @template
         tags:
             - { name: event.listener }
+
