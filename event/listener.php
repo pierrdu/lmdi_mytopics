@@ -20,9 +20,6 @@ class listener implements EventSubscriberInterface
 	/* @var \phpbb\template\template */
 	protected $template;
 
-	/* @var \phpbb\controller\helper */
-	protected $helper;
-
 
 	public function __construct(\phpbb\user $user, \phpbb\template\template $template)
 	{
@@ -50,8 +47,10 @@ class listener implements EventSubscriberInterface
 	
 	public function build_url ($event)
 	{
+		global $phpbb_root_path;
+		global $phpEx;
 		$params  = "author=" . $this->user->data['username'] . "&sf=firstpost&sr=topics";
-		$url = append_sid ("./search.php", $params);
+		$url = append_sid ($phpbb_root_path . "search." . $phpEx, $params);
 		$this->template->assign_var('U_MYTOPICS', $url);
 	}
 }
