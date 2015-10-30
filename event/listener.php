@@ -49,7 +49,7 @@ class listener implements EventSubscriberInterface
 	{
 		global $phpbb_root_path;
 		global $phpEx;
-		$params  = "author=" . $this->user->data['username'] . "&sf=firstpost&sr=topics";
+		$params  = "author=" . $this->user->data['username'] . "&amp;sf=firstpost&amp;sr=topics";
 		$url = append_sid ($phpbb_root_path . "search." . $phpEx, $params);
 		$this->template->assign_var('U_MYTOPICS', $url);
 	}
