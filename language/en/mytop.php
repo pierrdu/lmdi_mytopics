@@ -18,5 +18,5 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'MY_TOPICS'			=> 'My Topics',
+	'MY_TOPICS'			=> 'Your Topics',
 ));
