@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Adds a My topics item in the Quick links menu",
 	"homepage": "http://www.insecte.org/ext/readme.txt",
-	"version": "1.0.4",
-	"time": "2016-04-02",
+	"version": "1.0.5",
+	"time": "2016-04-04",
 	"license": "GPL-2.0",
 	"authors": [
 		{
@@ -12,6 +12,12 @@
 		"email": "pierre@duhem.com",
 		"homepage": "http://www.insecte.org/ext/readme.txt",
 		"role": "Extension Developer"
+		}
+		{
+		"name": "Erwan Nader",
+		"email": "ernadoo@phpbb-services.com",
+		"homepage": "http://www.phpbb-services.com",
+		"role": "author of the original MOD"
 		}
 	],
 	"require": {
