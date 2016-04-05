@@ -51,7 +51,7 @@ class listener implements EventSubscriberInterface
 	public function build_url($event)
 	{
 		$params  = "author=" . $this->user->data['username'] . "&amp;sf=firstpost&amp;sr=topics";
-		$url = append_sid($this->phpbb_root_path . "search." . $this->phpEx, $params);
+		$url = append_sid($this->root_path . "search." . $this->phpEx, $params);
 		$this->template->assign_var('U_MYTOPICS', $url);
 	}
 }
