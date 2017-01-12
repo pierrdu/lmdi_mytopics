@@ -2,7 +2,7 @@
 /*
 *
 * @package My Topics
-* @copyright (c) Pierre Duhem - LMDI - 2016
+* @copyright (c) Pierre Duhem - LMDI - 2016-2017
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -27,8 +27,8 @@ class listener implements EventSubscriberInterface
 	public function __construct(
 		\phpbb\user $user,
 		\phpbb\config\config $config,
-		\phpbb\template\template $template, 
-		$root_path, 
+		\phpbb\template\template $template,
+		$root_path,
 		$phpEx)
 	{
 		$this->user = $user;
