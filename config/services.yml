@@ -3,6 +3,7 @@ services:
         class: lmdi\mytop\event\listener
         arguments:
             - '@user'
+            - '@config'
             - '@template'
             - '%core.root_path%'
             - '%core.php_ext%'

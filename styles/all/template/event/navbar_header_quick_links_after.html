@@ -1,3 +1,10 @@
-<!-- IF S_DISPLAY_SEARCH and S_REGISTERED_USER -->
-	<li class="small-icon icon-search-self"><a href="{U_MYTOPICS}" role="menuitem">{L_MY_TOPICS}</a></li>
+<!-- IF S_320 -->
+	<!-- IF S_DISPLAY_SEARCH and S_REGISTERED_USER -->
+		<li> <a href="{U_MYTOPICS}" role="menuitem"> <i class="icon fa-file-o fa-fw" aria-hidden="true"></i>
+		<span>{L_MY_TOPICS}</span></a></li>
+	<!-- ENDIF -->
+<!-- ELSE -->
+	<!-- IF S_DISPLAY_SEARCH and S_REGISTERED_USER -->
+		<li class="small-icon icon-search-self"><a href="{U_MYTOPICS}" role="menuitem">{L_MY_TOPICS}</a></li>
+	<!-- ENDIF -->
 <!-- ENDIF -->
