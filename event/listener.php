@@ -66,7 +66,7 @@ class listener implements EventSubscriberInterface
 		{
 			$mytop_class = 1;
 		}
-		var_dump ($mytop_class);
+		// var_dump ($mytop_class);
 		$params  = "author=" . $this->user->data['username'] . "&amp;sf=firstpost&amp;sr=topics";
 		$url = append_sid($this->root_path . "search." . $this->phpEx, $params);
 		$this->template->assign_vars(array(
