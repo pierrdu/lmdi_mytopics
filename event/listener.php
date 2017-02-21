@@ -14,13 +14,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class listener implements EventSubscriberInterface
 {
 
-	/* @var \phpbb\user */
 	protected $user;
-	/* @var \phpbb\template\template */
 	protected $template;
 	protected $root_path;
 	protected $php_ext;
-	/* @var \phpbb\config\config */
 	protected $config;
 
 
@@ -38,6 +35,7 @@ class listener implements EventSubscriberInterface
 		$this->phpEx = $phpEx;
 	}
 
+
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -45,6 +43,7 @@ class listener implements EventSubscriberInterface
 			'core.page_header'	=> 'build_url',
 		);
 	}
+
 
 	public function load_language($event)
 	{
@@ -56,6 +55,7 @@ class listener implements EventSubscriberInterface
 		$event['lang_set_ext'] = $lang_set_ext;
 	}
 
+
 	public function build_url($event)
 	{
 		if (version_compare ($this->config['version'], '3.2.x', '<'))
@@ -66,12 +66,34 @@ class listener implements EventSubscriberInterface
 		{
 			$mytop_class = 1;
 		}
-		// var_dump ($mytop_class);
+		$options = $this->config['lmdi_mytop'];
+		switch ($options)
+		{
+			case 0 : 
+				$down = 0;
+				$hidden = 0;
+			break;
+			case 1 :
+				$down = 1;
+				$hidden = 0;
+			break;
+			case 2 :
+				$down = 0;
+				$hidden = 1;
+			break;
+			case 3 :
+				$down = 1;
+				$hidden = 1;
+			break;
+		}
 		$params  = "author=" . $this->user->data['username'] . "&amp;sf=firstpost&amp;sr=topics";
 		$url = append_sid($this->root_path . "search." . $this->phpEx, $params);
 		$this->template->assign_vars(array(
-			'U_MYTOPICS'	=> $url,
-			'S_320'		=> $mytop_class,
+			'U_MYTOPICS'		=> $url,
+			'S_MASK_MYPOSTS'	=> $hidden == 1 ? true : false,
+			'S_MYTOP_AFTER'	=> $down == 1 ? true : false,
+			'S_MYTOP_BEFORE'	=> $down == 0 ? true : false,
+			'S_320'			=> $mytop_class,
 		));
 	}
 }

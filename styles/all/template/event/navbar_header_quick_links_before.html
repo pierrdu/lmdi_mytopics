@@ -1,4 +1,11 @@
-<!-- IF S_DISPLAY_SEARCH and S_REGISTERED_USER and S_MYTOP_AFTER -->
+<!-- IF S_MASK_MYPOSTS -->
+	<!-- IF S_320 -->
+		<!-- INCLUDEJS @lmdi_mytop/mytop32.js -->
+	<!-- ELSE -->
+		<!-- INCLUDEJS @lmdi_mytop/mytop31.js -->
+	<!-- ENDIF -->
+<!-- ENDIF -->
+<!-- IF S_DISPLAY_SEARCH and S_REGISTERED_USER and S_MYTOP_BEFORE -->
 	<!-- IF S_320 -->
 		<li> <a href="{U_MYTOPICS}" role="menuitem"><i class="icon fa-file-o fa-fw" aria-hidden="true"></i><span>{L_MY_TOPICS}</span></a></li>
 	<!-- ELSE -->
