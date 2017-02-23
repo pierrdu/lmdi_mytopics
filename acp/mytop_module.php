@@ -23,7 +23,7 @@ class mytop_module {
 		$user->add_lang_ext ('lmdi/mytop', 'mytop');
 		$this->tpl_name = 'acp_mytop_body';
 		$this->page_title = $user->lang('ACP_MYTOP_TITLE');
-		
+
 		if (version_compare ($config['version'], '3.2.x', '<'))
 		{
 			$mytop_320 = 0;

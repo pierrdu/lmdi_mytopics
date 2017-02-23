@@ -60,16 +60,16 @@ class listener implements EventSubscriberInterface
 	{
 		if (version_compare ($this->config['version'], '3.2.x', '<'))
 		{
-			$mytop_class = 0;
+			$mytop_320 = 0;
 		}
 		else
 		{
-			$mytop_class = 1;
+			$mytop_320 = 1;
 		}
 		$options = $this->config['lmdi_mytop'];
 		switch ($options)
 		{
-			case 0 : 
+			case 0 :
 				$down = 0;
 				$hidden = 0;
 			break;
@@ -93,7 +93,7 @@ class listener implements EventSubscriberInterface
 			'S_MASK_MYPOSTS'	=> $hidden == 1 ? true : false,
 			'S_MYTOP_AFTER'	=> $down == 1 ? true : false,
 			'S_MYTOP_BEFORE'	=> $down == 0 ? true : false,
-			'S_320'			=> $mytop_class,
+			'S_320'			=> $mytop_320,
 		));
 	}
 }
