@@ -24,6 +24,7 @@ class mytop_module {
 		$this->tpl_name = 'acp_mytop_body';
 		$this->page_title = $user->lang('ACP_MYTOP_TITLE');
 
+		/*
 		if (version_compare ($config['version'], '3.2.x', '<'))
 		{
 			$mytop_320 = 0;
@@ -32,6 +33,7 @@ class mytop_module {
 		{
 			$mytop_320 = 1;
 		}
+		*/
 
 		$action = $request->variable ('action', '');
 		$update_action = false;
@@ -96,7 +98,7 @@ class mytop_module {
 			'MYTOP_DOWN'		=> $down == 1 ? 'checked="checked"' : '',
 			'MYPOSTS_YES'		=> $hidden == 1 ? 'checked="checked"' : '',
 			'MYPOSTS_NO'		=> $hidden == 0 ? 'checked="checked"' : '',
-			'S_320'			=> $mytop_320 ? true : false,
+			// 'S_320'			=> $mytop_320 ? true : false,
 			));
 	}
 }
