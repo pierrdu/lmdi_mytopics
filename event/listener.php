@@ -17,7 +17,7 @@ class listener implements EventSubscriberInterface
 	protected $user;
 	protected $template;
 	protected $root_path;
-	protected $php_ext;
+	protected $phpEx;
 	protected $config;
 
 

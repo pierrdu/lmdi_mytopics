@@ -11,32 +11,15 @@ namespace lmdi\mytop\acp;
 class mytop_module {
 
 	public $u_action;
-	protected $action;
-	protected $table;
 
 	public function main ($id, $mode)
 	{
-		global $db, $user, $template, $cache, $request;
-		global $config, $phpbb;
-		global $table_prefix, $phpbb_log;
+		global $user, $template, $request, $config;
 
 		$user->add_lang_ext ('lmdi/mytop', 'mytop');
 		$this->tpl_name = 'acp_mytop_body';
 		$this->page_title = $user->lang('ACP_MYTOP_TITLE');
 
-		/*
-		if (version_compare ($config['version'], '3.2.x', '<'))
-		{
-			$mytop_320 = 0;
-		}
-		else
-		{
-			$mytop_320 = 1;
-		}
-		*/
-
-		$action = $request->variable ('action', '');
-		$update_action = false;
 		$form_key = 'lmdi_mytop';
 
 		if ($request->is_set_post('submit'))
@@ -91,14 +74,12 @@ class mytop_module {
 			break;
 		}
 		$template->assign_vars(array(
-			'F_ACTION'		=> $this->u_action . '&amp;action=forums',
-			'R_ACTION'		=> $this->u_action . '&amp;action=recursion',
+			'R_ACTION'		=> $this->u_action,
 			'S_CONFIG_PAGE'	=> true,
 			'MYTOP_UP'		=> $down == 0 ? 'checked="checked"' : '',
 			'MYTOP_DOWN'		=> $down == 1 ? 'checked="checked"' : '',
 			'MYPOSTS_YES'		=> $hidden == 1 ? 'checked="checked"' : '',
 			'MYPOSTS_NO'		=> $hidden == 0 ? 'checked="checked"' : '',
-			// 'S_320'			=> $mytop_320 ? true : false,
 			));
 	}
 }
