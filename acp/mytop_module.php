@@ -1,7 +1,7 @@
 <?php
 /**
 * @package phpBB Extension - LMDI My Topics
-* @copyright (c) 2015-2017 Pierre Duhem - LMDI
+* @copyright (c) 2015-2019 Pierre Duhem - LMDI
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
@@ -11,15 +11,21 @@ namespace lmdi\mytop\acp;
 class mytop_module {
 
 	public $u_action;
+	protected $action;
+	protected $table;
 
 	public function main ($id, $mode)
 	{
-		global $user, $template, $request, $config;
+		global $db, $language, $template, $cache, $request;
+		global $config, $phpbb;
+		global $table_prefix, $phpbb_log;
 
-		$user->add_lang_ext ('lmdi/mytop', 'mytop');
+		$language->add_lang('mytop', 'lmdi/mytop');
 		$this->tpl_name = 'acp_mytop_body';
-		$this->page_title = $user->lang('ACP_MYTOP_TITLE');
+		$this->page_title = $language->lang('ACP_MYTOP_TITLE');
 
+		$action = $request->variable ('action', '');
+		$update_action = false;
 		$form_key = 'lmdi_mytop';
 
 		if ($request->is_set_post('submit'))
@@ -48,7 +54,7 @@ class mytop_module {
 			{
 				$config->set ('lmdi_mytop', 0);
 			}
-			trigger_error($user->lang['ACP_MYTOP_UPDATED'] . adm_back_link($this->u_action));
+			trigger_error($language->lang('ACP_MYTOP_UPDATED') . adm_back_link($this->u_action));
 		}
 
 		add_form_key ($form_key);
@@ -74,7 +80,8 @@ class mytop_module {
 			break;
 		}
 		$template->assign_vars(array(
-			'R_ACTION'		=> $this->u_action,
+			'F_ACTION'		=> $this->u_action . '&amp;action=forums',
+			'R_ACTION'		=> $this->u_action . '&amp;action=recursion',
 			'S_CONFIG_PAGE'	=> true,
 			'MYTOP_UP'		=> $down == 0 ? 'checked="checked"' : '',
 			'MYTOP_DOWN'		=> $down == 1 ? 'checked="checked"' : '',

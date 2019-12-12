@@ -2,7 +2,7 @@
 /*
 *
 * @package My Topics
-* @copyright (c) Pierre Duhem - LMDI - 2016-2017
+* @copyright (c) Pierre Duhem - LMDI - 2016-2019
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -17,7 +17,7 @@ class listener implements EventSubscriberInterface
 	protected $user;
 	protected $template;
 	protected $root_path;
-	protected $phpEx;
+	protected $php_ext;
 	protected $config;
 
 
@@ -58,18 +58,10 @@ class listener implements EventSubscriberInterface
 
 	public function build_url($event)
 	{
-		if (version_compare ($this->config['version'], '3.2.x', '<'))
-		{
-			$mytop_320 = 0;
-		}
-		else
-		{
-			$mytop_320 = 1;
-		}
 		$options = $this->config['lmdi_mytop'];
 		switch ($options)
 		{
-			case 0 :
+			case 0 : 
 				$down = 0;
 				$hidden = 0;
 			break;
@@ -93,7 +85,6 @@ class listener implements EventSubscriberInterface
 			'S_MASK_MYPOSTS'	=> $hidden == 1 ? true : false,
 			'S_MYTOP_AFTER'	=> $down == 1 ? true : false,
 			'S_MYTOP_BEFORE'	=> $down == 0 ? true : false,
-			'S_320'			=> $mytop_320,
 		));
 	}
 }

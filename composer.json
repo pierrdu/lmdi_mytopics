@@ -1,10 +1,10 @@
 {
 	"name": "lmdi/mytop",
 	"type": "phpbb-extension",
-	"description": "Adds a My topics item in the Quick links menu (3.1.x/3.2.x)",
+	"description": "Adds a My topics item in the Quick links menu (3.2.x)",
 	"homepage": "http://www.insecte.org/ext/readme.txt",
-	"version": "1.0.12",
-	"time": "2017-04-10",
+	"version": "1.0.11",
+	"time": "2019-12-12",
 	"license": "GPL-2.0",
 	"authors": [
 		{
@@ -27,7 +27,7 @@
 	"extra": {
 		"display-name": "LMDI My Topics",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.1.0"
+			"phpbb/phpbb": ">=3.2.0"
 		}
 	}
 }
